@@ -3,9 +3,7 @@ package algorithms;
 import static java.lang.Math.abs;
 import java.math.BigInteger;
 
-public class Fibonacci implements Algorithm {
-
-    private String name;
+public class Fibonacci extends AbsAlgorithm {
 
     public Fibonacci() {
         name = "Fibonacci";
@@ -28,9 +26,5 @@ public class Fibonacci implements Algorithm {
             }
         }
         return num2;
-    }
-
-    public String toString() {
-        return "algorithm: " + name;
     }
 }

@@ -1,4 +1,5 @@
 import algorithms.Algorithm;
+import algorithms.Factorial;
 import algorithms.Fibonacci;
 import sorts.Bubble;
 import sorts.Insertion;
@@ -13,7 +14,7 @@ import java.math.BigInteger;
 public class Main {
 
     public static void main(String[] args) {
-//        executeAlgorithms();
+        executeAlgorithms();
         executeSorting();
     }
 
@@ -40,10 +41,13 @@ public class Main {
     }
 
     private static void executeAlgorithms() {
-        Algorithm alg = new Fibonacci();
         int userInput = getNumberFromUser();
-        BigInteger result = alg.executeAlgorithm(userInput);
-        System.out.println(alg + " result for (" + userInput + "): " + result);
+        Algorithm fibo = new Fibonacci();
+        Algorithm facto = new Factorial();
+        BigInteger resultFibo = fibo.executeAlgorithm(userInput);
+        System.out.println(fibo + " result for (" + userInput + "): " + resultFibo);
+        BigInteger resultFacto = facto.executeAlgorithm(userInput);
+        System.out.println(facto + " result for (" + userInput + "): " + resultFacto);
     }
 
     private static List<Integer> createFilledIntegerList(int length) {
@@ -73,7 +77,7 @@ public class Main {
             System.out.println("Please type an integer positive number ---> ");
             try {
                 userInput = sc.nextInt();
-                if(userInput > 1) {
+                if(userInput > 0) {
                     isReady = true;
                 }
             } catch (Exception ex) {
