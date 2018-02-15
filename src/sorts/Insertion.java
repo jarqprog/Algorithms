@@ -13,7 +13,7 @@ public class Insertion implements Sorting {
         int length = elements.size();
         for(int i=0; i<length - 1; i++) {
             if(numbers[i] > numbers[i+1]) {
-                for(int j=i+1; j>0; --j) {20
+                for(int j=i+1; j>0; --j) {
                     if(numbers[j] > numbers[j-1]) {
                         break;
                     }
