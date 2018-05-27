@@ -1,4 +1,4 @@
-package algorithms;
+package com.jarq.algorithms;
 
 import static java.lang.Math.abs;
 import java.math.BigInteger;

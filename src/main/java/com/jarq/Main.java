@@ -1,15 +1,17 @@
-import algorithms.Algorithm;
-import algorithms.Factorial;
-import algorithms.Fibonacci;
-import sorts.Bubble;
-import sorts.Insertion;
-import sorts.Sorting;
+package com.jarq;
 
+import com.jarq.algorithms.Algorithm;
+import com.jarq.algorithms.Factorial;
+import com.jarq.algorithms.Fibonacci;
+import com.jarq.sorts.Bubble;
+import com.jarq.sorts.Insertion;
+import com.jarq.sorts.Sorting;
+
+import java.math.BigInteger;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import java.math.BigInteger;
 
 public class Main {
 
@@ -24,7 +26,7 @@ public class Main {
         int elementsInList = getNumberFromUser();
         // bubble sort:
         List<Integer> list = createFilledIntegerList(elementsInList);
-        list = shuffleList(list);
+        Collections.shuffle(list);
         displayListElements(list);
         Sorting bubble = new Bubble();
         list = bubble.executeSort(list);
@@ -32,7 +34,7 @@ public class Main {
 
         // insertion:
         list = createFilledIntegerList(elementsInList);
-        list = shuffleList(list);
+        Collections.shuffle(list);
         displayListElements(list);
         Sorting insertion = new Insertion();
         list = insertion.executeSort(list);
@@ -56,11 +58,6 @@ public class Main {
         for(int i=0; i<length; i++) {
             list.add(i);
         }
-        return list;
-    }
-
-    private static <T extends Comparable> List<T> shuffleList(List<T> list) {
-        Collections.shuffle(list);
         return list;
     }
 

@@ -1,4 +1,4 @@
-package sorts;
+package com.jarq.sorts;
 
 import java.util.List;
 
