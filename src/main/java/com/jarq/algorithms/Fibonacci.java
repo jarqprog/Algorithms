@@ -1,30 +1,52 @@
 package com.jarq.algorithms;
 
-import static java.lang.Math.abs;
-import java.math.BigInteger;
+public class Fibonacci implements IFibonacci {
 
-public class Fibonacci extends AbsAlgorithm {
 
-    public Fibonacci() {
-        name = "Fibonacci";
+    @Override
+    public long perform(int num) {
+
+        if(num <= 0) {
+            return 0;
+        }
+
+        if(num == 1) {
+            return 1;
+        }
+
+        long tmp, current, prev;
+        current = 1;
+        prev = 0;
+
+        for(int i=1; i<num; i++) {
+            tmp = current;
+            current = current + prev;
+            prev = tmp;
+        }
+
+        return current;
     }
 
-    public BigInteger executeAlgorithm(int num) {
-        num = abs(num);
-        BigInteger num1 = BigInteger.valueOf(0);
-        BigInteger num2 = BigInteger.valueOf(1);
-        BigInteger tmp;
-        if (num == 0) {
-            return num1;
-        } else if ( num == 1) {
-            return num2;
-        } else {
-            for(int n = 0; n < num-1; n++) {
-                tmp = num2;
-                num2 = num2.add(num1);
-                num1 = tmp;
-            }
+    @Override
+    public long performRec(int n) {
+        Long[] memo = new Long[n+1];
+        return handleRec(n, memo);
+    }
+
+    private long handleRec(int num, Long[] memo) {
+        if(memo[num] != null) {
+            return memo[num];
         }
-        return num2;
+
+        if(num <= 0) {
+            return 0;
+        }
+        if(num == 1) {
+            return 1;
+        }
+
+        long result = handleRec(num-2, memo) + handleRec(num-1, memo);
+        memo[num] = result;
+        return result;
     }
 }

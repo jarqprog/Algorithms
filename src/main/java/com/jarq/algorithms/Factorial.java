@@ -1,26 +1,40 @@
 package com.jarq.algorithms;
 
-import java.math.BigInteger;
+public class Factorial implements IFactorial {
 
-import static java.lang.Math.abs;
+    public long perform(int num) {
 
-public class Factorial extends AbsAlgorithm {
+        if(num < 1) {
+            return 1;
+        }
 
-    public Factorial() {
-        name = "Factorial";
+        int result = 1;
+
+        for(int i=1; i<=num; i++) {
+            result *= i;
+        }
+        return result;
+
     }
 
-    public BigInteger executeAlgorithm(int num) {
-        num = abs(num);
-        if(num == 0) {
-            return BigInteger.valueOf(0);
-        } else {
-            BigInteger result = BigInteger.valueOf(1);
+    public long performRec(int num) {
 
-            for (int i=1; i <= num; i++) {
-                result = result.multiply(BigInteger.valueOf(i));
-            }
-            return result;
+        Long[] memo = new Long[num+1];
+
+        return performWithMemo(num, memo);
+    }
+
+    private long performWithMemo(int num, Long[] memo) {
+
+        if(memo[num] != null) {
+            return memo[num];
         }
+
+        if(num < 2) {
+            return 1;
+        }
+
+        memo[num] = num * performWithMemo(num-1, memo);
+        return memo[num];
     }
 }

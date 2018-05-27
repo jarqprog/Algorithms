@@ -2,7 +2,7 @@ package com.jarq.sorts;
 
 import java.util.List;
 
-public class Bubble implements Sorting {
+public class Merge implements Sorting {
 
     @Override
     public <T extends Comparable<T>> List<T> sort(List<T> elements) {

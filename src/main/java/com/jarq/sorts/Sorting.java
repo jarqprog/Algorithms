@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface Sorting {
 
-    List<Integer> executeSort(List<Integer> elements);
+    <T extends Comparable<T>> List<T> sort(List<T> elements);
+    int[] sort(int[] elements);
 }
