@@ -1,4 +1,4 @@
-package com.jarq.algorithms;
+package com.jarq.algorithms.romanArabicConverter;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
