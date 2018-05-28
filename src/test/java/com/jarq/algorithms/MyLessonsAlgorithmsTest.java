@@ -116,4 +116,36 @@ public class MyLessonsAlgorithmsTest {
         assertEquals(expected, algorithms.titleCase(toCapitalize));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void findKMax_using_invalid_array() throws IllegalArgumentException {
+
+        int[] numbers = new int[0];
+        algorithms.findKMax(numbers, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void findKMax_using_invalid_k() throws IllegalArgumentException {
+
+        int[] numbers = {1, 5, 4, 10, 12, 3, 8};
+        algorithms.findKMax(numbers, 11);
+        algorithms.findKMax(numbers, 0);
+    }
+
+    @Test
+    public void findKMax() {
+
+        int[] numbers = {1, 5, 4, 10, 12, 3, 8};
+        int kMax = 3;
+
+        assertEquals(8, algorithms.findKMax(numbers, kMax));
+    }
+
+    @Test
+    public void findKMax_with_repeated_nums() {
+
+        int[] numbers = {1, 5, 4, 10, 10, 3, 8, 10, 10};
+        int kMax = 4;
+
+        assertEquals(10, algorithms.findKMax(numbers, kMax));
+    }
 }

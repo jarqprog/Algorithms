@@ -109,7 +109,40 @@ public class MyLessonsAlgorithms implements LessonsAlgorithms {
     }
 
     @Override
-    public void FizzBuzz() {
+    public int findKMax(int[] numbers, int k) {
+
+        if (numbers.length == 0 || k > numbers.length || k < 1) {
+            throw new IllegalArgumentException("invalid arguments!");
+        }
+
+        if (numbers.length == 1) {
+            return numbers[0];
+        }
+
+        int counter = 0;
+        int currentMaxIndex = 0;
+
+        while(counter <= k) {
+            for(int i=counter+1; i<numbers.length; i++) {  // i=counter+1 (to start iterating from second element)
+                if (numbers[i] > numbers[currentMaxIndex]) {
+                    currentMaxIndex = i;
+                }
+            }
+
+            if(counter != currentMaxIndex) {  // new max was matched
+                int temp = numbers[counter];  // swap in place
+                numbers[counter] = numbers[currentMaxIndex];
+                numbers[currentMaxIndex] = temp;
+            }
+            counter++;
+        }
+        return numbers[k-1];  // return correct k max value
+    }
+
+
+
+    @Override
+    public void fizzBuzz() {
 
     }
 }
