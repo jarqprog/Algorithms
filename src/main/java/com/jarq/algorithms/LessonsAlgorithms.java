@@ -7,6 +7,5 @@ public interface LessonsAlgorithms {
     boolean isPalindrom(String toCheck);
     String findLongestWord(String sentence);
     String titleCase(String sentence);
-    void fizzBuzz();
     int findKMax(int[] numbers, int k);
 }

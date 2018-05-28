@@ -138,11 +138,4 @@ public class MyLessonsAlgorithms implements LessonsAlgorithms {
         }
         return numbers[k-1];  // return correct k max value
     }
-
-
-
-    @Override
-    public void fizzBuzz() {
-
-    }
 }
