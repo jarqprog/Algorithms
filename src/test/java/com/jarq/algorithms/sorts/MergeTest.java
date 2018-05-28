@@ -1,4 +1,4 @@
-package com.jarq.sorts;
+package com.jarq.algorithms.sorts;
 
 import org.junit.Test;
 
@@ -7,9 +7,9 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class BubbleTest {
+public class MergeTest {
 
-    private Sorting sorting = new Bubble();
+    private Sorting sorting = new Merge();
 
     @Test
     public void sort_list() {
@@ -23,8 +23,8 @@ public class BubbleTest {
     @Test
     public void sort_array() {
 
-        int[] unsorted = {4, -11, 8, 2000, -3, 1, 0};
-        int[] sorted = {-11, -3, 0, 1, 4, 8, 2000};
+        int[] unsorted = {4, -11, 8, 2000, -3, 1, 2};
+        int[] sorted = {-11, -3, 1, 2, 4, 8, 2000};
 
         assertArrayEquals(sorted, sorting.sort(unsorted));
     }

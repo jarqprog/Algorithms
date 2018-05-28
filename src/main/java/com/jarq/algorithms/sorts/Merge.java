@@ -1,4 +1,4 @@
-package com.jarq.sorts;
+package com.jarq.algorithms.sorts;
 
 import java.util.*;
 
