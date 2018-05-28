@@ -2,7 +2,6 @@ package com.jarq.algorithms.romanArabicConverter;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class RomanArabicConverter implements IRomanArabicConverter {
 
@@ -10,8 +9,31 @@ public class RomanArabicConverter implements IRomanArabicConverter {
 
     @Override
     public int toArabic(String roman) {
-        
-        return 0;
+
+        int length = roman.length();
+        int result = 0;
+        String matcher;
+
+        for(int i=0; i<length; i++) {
+            matcher = "";
+            if(i+1 < length) {
+                matcher = roman.substring(i, i+2);
+                if(romanWithArabic.containsKey(matcher)) {
+                    result += romanWithArabic.get(matcher);
+                    i++;
+                } else {
+                    matcher = "";
+                }
+            }
+
+            if(matcher.length() == 0) {
+                matcher = roman.substring(i, i+1);
+                if(romanWithArabic.containsKey(matcher)) {
+                    result += romanWithArabic.get(matcher);
+                }
+            }
+        }
+        return result;
     }
 
 
@@ -24,14 +46,14 @@ public class RomanArabicConverter implements IRomanArabicConverter {
         boolean isReady;
         StringBuilder stringBuilder = new StringBuilder();
 
-        for(Map.Entry<String,Integer> romanAndArabic : romanWithArabic.entrySet()) {
+        for(Map.Entry<String,Integer> romanWithArabic : romanWithArabic.entrySet()) {
             isReady = false;
             while(! isReady) {
-                if(arabicNumber - romanAndArabic.getValue() < 0) {
+                if(arabicNumber - romanWithArabic.getValue() < 0) {
                     isReady = true;
                 } else {
-                    arabicNumber -= romanAndArabic.getValue();
-                    stringBuilder.append(romanAndArabic.getKey());
+                    arabicNumber -= romanWithArabic.getValue();
+                    stringBuilder.append(romanWithArabic.getKey());
                 }
             }
         }
@@ -45,6 +67,7 @@ public class RomanArabicConverter implements IRomanArabicConverter {
         romanWithArabic.put("D", 500);
         romanWithArabic.put("CD", 400);
         romanWithArabic.put("C", 100);
+        romanWithArabic.put("XC", 90);
         romanWithArabic.put("L", 50);
         romanWithArabic.put("XL", 40);
         romanWithArabic.put("X", 10);
@@ -54,14 +77,5 @@ public class RomanArabicConverter implements IRomanArabicConverter {
         romanWithArabic.put("I", 1);
 
         return romanWithArabic;
-    }
-
-    private String getRomanByArabic(Integer arabic) {
-        for (Map.Entry<String, Integer> entry : romanWithArabic.entrySet()) {
-            if (Objects.equals(arabic, entry.getValue())) {
-                return entry.getKey();
-            }
-        }
-        return "";
     }
 }

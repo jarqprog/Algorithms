@@ -39,7 +39,21 @@ public class RomanArabicConverterTest {
     }
 
     @Test
-    public void toArabic() {
+    public void toArabic_XXII() {
+        String roman = "XXII";
+        int arabic = 22;
+        assertEquals(arabic, converter.toArabic(roman));
+    }
+
+    @Test
+    public void toArabic_MCDX() {
+        String roman = "MCDX";
+        int arabic = 1410;
+        assertEquals(arabic, converter.toArabic(roman));
+    }
+
+    @Test
+    public void toArabic_MCMLXXXII() {
         String roman = "MCMLXXXII";
         int arabic = 1982;
         assertEquals(arabic, converter.toArabic(roman));
