@@ -7,31 +7,34 @@ public class SumImpl implements Sum {
 
     @Override
     public boolean checkSumOfTwo(int[] numbers, int sum) {
-//
-//        int len = numbers.length;
-//
-//        if(len < 2) {
-//            throw new IllegalArgumentException();
-//        }
-//
-//        if(len == 2) {
-//            return numbers[0] + numbers[1] == sum;
-//        }
-//
-//        Arrays.sort(numbers);
-//
-//        int right = len-1;
-//
-//        for(int left = 0; left<right; left++) {
-//
-//            if(numbers[left] + numbers[right] == sum) {
-//                return true;
-//            }
-//
-//            if(numbers[left] + numbers[right] > sum) {
-//                right--;
-//            }
-//        }
+
+        int len = numbers.length;
+
+        if(len < 2) {
+            throw new IllegalArgumentException();
+        }
+
+        if(len == 2) {
+            return numbers[0] + numbers[1] == sum;
+        }
+
+        Arrays.sort(numbers);
+
+        int right = len-1;
+        int left = 0;
+
+        while(left < right) {
+
+            if(numbers[left] + numbers[right] == sum) {
+                return true;
+            }
+
+            if(numbers[left] + numbers[right] > sum) {
+                right--;
+            } else {
+                left++;
+            }
+        }
         return false;
     }
 
@@ -49,16 +52,21 @@ public class SumImpl implements Sum {
 
         Arrays.sort(numbers);
 
-        int right = len-1;
+        for(int left=0; left<len-2; left++) {
 
-        for(int left = 0; left<right; left++) {
+            int middle = left+1;
+            int right = len-1;
 
-            if(numbers[left] + numbers[right] == sum) {
-                return true;
-            }
+            while(middle<right) {
+                if (numbers[left] + numbers[middle] + numbers[right] == sum) {
+                    return true;
+                }
 
-            if(numbers[left] + numbers[right] > sum) {
-                right--;
+                if (numbers[left] + numbers[middle] + numbers[right] > sum) {
+                    right--;
+                } else {
+                    middle++;
+                }
             }
         }
         return false;
