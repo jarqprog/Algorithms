@@ -11,7 +11,7 @@ public class IntBinarySearch implements BinarySearch<Integer> {
             return false;
         }
 
-        int[] primitives = transformListToArray(numbers);
+        int[] primitives = transformListToArray(numbers);  // it's more efficient to operate on primitives (checked)
         Arrays.sort(primitives);
 
         int leftBorder = 0;
@@ -63,6 +63,7 @@ public class IntBinarySearch implements BinarySearch<Integer> {
         } else {
             leftBorder = middleIndex;
         }
+
         return containsRec(numbers, number, leftBorder, rightBorder);
     }
 
