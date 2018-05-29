@@ -1,6 +1,6 @@
 package com.jarq.algorithms.greedy;
 
-public interface Sum {
+public interface ISumInArray {
 
     boolean checkSumOfTwo(int[] numbers, int sum);
     boolean checkSumOfThree(int[] numbers, int sum);

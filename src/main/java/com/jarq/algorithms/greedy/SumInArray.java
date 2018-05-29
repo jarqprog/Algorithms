@@ -2,7 +2,7 @@ package com.jarq.algorithms.greedy;
 
 import java.util.Arrays;
 
-public class SumImpl implements Sum {
+public class SumInArray implements ISumInArray {
 
 
     @Override
@@ -58,8 +58,10 @@ public class SumImpl implements Sum {
             int right = len-1;
 
             while(middle<right) {
-                if (numbers[left] + numbers[middle] + numbers[right] == sum) {
-                    return true;
+                if(left != middle) {
+                    if (numbers[left] + numbers[middle] + numbers[right] == sum) {
+                        return true;
+                    }
                 }
 
                 if (numbers[left] + numbers[middle] + numbers[right] > sum) {

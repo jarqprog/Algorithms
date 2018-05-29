@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class SumImplTest {
+public class SumInArrayTest {
 
-    private Sum sum = new SumImpl();
+    private ISumInArray sum = new SumInArray();
 
     @Test(expected = IllegalArgumentException.class)
     public void checkSumOfTwo_with_invalid_array() throws IllegalArgumentException {
