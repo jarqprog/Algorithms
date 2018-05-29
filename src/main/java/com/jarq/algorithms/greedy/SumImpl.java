@@ -71,4 +71,39 @@ public class SumImpl implements Sum {
         }
         return false;
     }
+
+    @Override
+    public boolean checkSumOfTwoInArray(int[] numbers) {
+        int len = numbers.length;
+
+        if(len < 3) {
+            throw new IllegalArgumentException();
+        }
+
+        Arrays.sort(numbers);
+
+        for(int middle=0; middle<len; middle++) {
+
+            int left = 0;
+            int right = len-1;
+
+            while(left<right) {
+                if (left != middle && middle != right && (
+                        numbers[left] + numbers[middle] == numbers[right] ||
+                        numbers[left] == numbers[middle] + numbers[right] ||
+                        numbers[middle] == numbers[left] + numbers[right])
+
+                    ) {
+                    return true;
+                }
+
+                if (numbers[left] + numbers[middle] > numbers[right]) {
+                    right--;
+                } else {
+                    left++;
+                }
+            }
+        }
+        return false;
+    }
 }

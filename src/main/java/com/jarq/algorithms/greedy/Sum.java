@@ -4,4 +4,5 @@ public interface Sum {
 
     boolean checkSumOfTwo(int[] numbers, int sum);
     boolean checkSumOfThree(int[] numbers, int sum);
+    boolean checkSumOfTwoInArray(int[] numbers);
 }
