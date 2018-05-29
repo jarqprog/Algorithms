@@ -8,7 +8,7 @@ public class HPDemo {
 
         int[] numbers = {-10, 2, 20, 30, 10, 2, 1};
 
-        System.out.println(hp.calculate(numbers));
+        System.out.println(hp.calculateForTwo(numbers));
 
 
         int[] numbers1 = {5, 1, 8, 7, 2, 30, 10, 10, 20, 1, 1, 2, 4, 5, 6, 7, 1, 2, 3, 4, 5,
@@ -16,9 +16,9 @@ public class HPDemo {
 
         long start, stop;
         start = System.nanoTime();
-        System.out.println(hp.calculate(numbers1));
+        System.out.println(hp.calculateForTwo(numbers1));
         stop = System.nanoTime() - start;
-        System.out.println("Exe time calculate(): " + stop);
+        System.out.println("Exe time calculateForTwo(): " + stop);
 
         start = System.nanoTime();
         System.out.println(hp.calculateForThree(numbers1));

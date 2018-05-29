@@ -8,10 +8,59 @@ public class HighestProductImplTest {
 
     private HighestProduct hp = new HighestProductImpl();
 
-    @Test
-    public void calculate() {
+    // calculate for two
 
+    @Test(expected = IllegalArgumentException.class)
+    public void calculateForTwo_using_invalid_array() throws IllegalArgumentException {
+        hp.calculateForTwo(new int[1]);
     }
+
+    @Test
+    public void calculateForTwo_using_zeros_array() {
+
+        int[] numbers = new int[10];
+        Integer expected = 0;
+
+        assertEquals(expected, hp.calculateForTwo(numbers));
+    }
+
+    @Test
+    public void calculateForTwo_using_two_numbers_array() {
+
+        int[] numbers = {-2, 1};
+        Integer expected = -2;
+
+        assertEquals(expected, hp.calculateForTwo(numbers));
+    }
+
+    @Test
+    public void calculateForTwo_using_positive_numbers() {
+
+        int[] numbers = {4, 5, 1, 2, 9, 8, 100, 10};
+        Integer expected = 1000;
+
+        assertEquals(expected, hp.calculateForTwo(numbers));
+    }
+
+    @Test
+    public void calculateForTwo_using_mixed_numbers() {
+
+        int[] numbers = {4, 5, 1, 2, 9, 8, 20, 10, -20, -40};
+        Integer expected = 800;
+
+        assertEquals(expected, hp.calculateForTwo(numbers));
+    }
+
+    @Test
+    public void calculateForTwo_using_negative_numbers() {
+
+        int[] numbers = {-1, -2, -3, -20, -40};
+        Integer expected = 800;
+
+        assertEquals(expected, hp.calculateForTwo(numbers));
+    }
+
+    // calculate for three
 
     @Test(expected = IllegalArgumentException.class)
     public void calculateForThree_using_invalid_array() throws IllegalArgumentException {
@@ -46,7 +95,6 @@ public class HighestProductImplTest {
         assertEquals(expected, hp.calculateForThree(numbers));
     }
 
-
     @Test
     public void calculateForThree_using_negative_numbers() {
 
@@ -55,6 +103,8 @@ public class HighestProductImplTest {
 
         assertEquals(expected, hp.calculateForThree(numbers));
     }
+
+    // using loops
 
     @Test(expected = IllegalArgumentException.class)
     public void calculateForThreeWithLoops_using_invalid_array() throws IllegalArgumentException {

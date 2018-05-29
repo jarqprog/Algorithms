@@ -32,7 +32,7 @@ public class SumImpl implements Sum {
 //                right--;
 //            }
 //        }
-//        return false;
+        return false;
     }
 
     @Override

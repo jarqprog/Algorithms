@@ -3,9 +3,13 @@ package com.jarq.algorithms.greedy;
 public class HighestProductImpl implements HighestProduct {
 
     @Override
-    public int calculate(int[] numbers) {
+    public Integer calculateForTwo(int[] numbers) {
         if(numbers.length < 2) {
             throw new IllegalArgumentException();
+        }
+
+        if(numbers.length == 2) {
+            return numbers[0] * numbers[1];
         }
 
         int max = Integer.MIN_VALUE;
@@ -48,6 +52,7 @@ public class HighestProductImpl implements HighestProduct {
             throw new IllegalArgumentException();
         }
 
+        // in this case using nulls instead of max/min integer
         Integer max = null;
         Integer max1 = null;
         Integer max2 = null;
@@ -85,7 +90,7 @@ public class HighestProductImpl implements HighestProduct {
             }
         }
 
-        // calculate both results
+        // calculateForTwo both results
         if(max1 != null && max2 != null) {
             res1 = max * max1 * max2;
         }
@@ -113,18 +118,15 @@ public class HighestProductImpl implements HighestProduct {
         int max = Integer.MIN_VALUE;
 
         for(int i=0; i<numbers.length; i++) {
-            for(int j=0; j<numbers.length; j++) {
-                for(int k=0; k<numbers.length; k++) {
-                    if(i != j && j != k && i != k) {
-                        if(numbers[i] * numbers[j] * numbers[k] > max) {
-                            max = numbers[i] * numbers[j] * numbers[k];
-                        }
+            for(int j=i+1; j<numbers.length; j++) {
+                for(int k=j+1; k<numbers.length; k++) {
+                    if(numbers[i] * numbers[j] * numbers[k] > max) {
+                        max = numbers[i] * numbers[j] * numbers[k];
                     }
 
                 }
             }
         }
-
         return max;
     }
 

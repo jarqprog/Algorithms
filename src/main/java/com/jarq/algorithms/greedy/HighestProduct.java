@@ -2,7 +2,7 @@ package com.jarq.algorithms.greedy;
 
 public interface HighestProduct {
 
-    int calculate(int[] numbers);
+    Integer calculateForTwo(int[] numbers);
 
     Integer calculateForThree(int[] numbers);
 
