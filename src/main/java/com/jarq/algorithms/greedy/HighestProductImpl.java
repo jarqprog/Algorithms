@@ -86,7 +86,7 @@ public class HighestProductImpl implements HighestProduct {
         }
 
         // calculate both results
-        if(max != null && max1 != null && max2 != null) {
+        if(max1 != null && max2 != null) {
             res1 = max * max1 * max2;
         }
 
