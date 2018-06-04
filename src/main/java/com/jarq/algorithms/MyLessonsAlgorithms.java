@@ -1,5 +1,10 @@
 package com.jarq.algorithms;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Stack;
+import java.util.TreeSet;
+
 public class MyLessonsAlgorithms implements LessonsAlgorithms {
 
     @Override
@@ -109,7 +114,39 @@ public class MyLessonsAlgorithms implements LessonsAlgorithms {
     }
 
     @Override
-    public int findKMax(int[] numbers, int k) {
+    public int findKMax(int[] numbers, int k) {  // using stack
+
+        if (numbers.length == 0 || k > numbers.length || k < 1) {
+            throw new IllegalArgumentException("invalid arguments!");
+        }
+
+        if (numbers.length == 1) {
+            return numbers[0];
+        }
+
+        Stack<Integer> usedIndexes = new Stack<>();
+
+        int length = numbers.length;
+        int currentMax;
+        int currentMaxIndex;
+        for(int i=0; i<k; i++) {
+            currentMax = Integer.MIN_VALUE;
+            currentMaxIndex = -1;
+            for(int j=0; j<length; j++) {
+                if(numbers[j] > currentMax && !usedIndexes.contains(j)) {
+                    currentMax = numbers[j];
+                    currentMaxIndex = j;
+                }
+            }
+            if(currentMaxIndex != -1) {
+                usedIndexes.push(currentMaxIndex);
+            }
+        }
+        return numbers[usedIndexes.peek()];  // return correct k max value (last added index to stack)
+    }
+
+    @Override
+    public int findKMaxWithTransform(int[] numbers, int k) {  // transforms given array
 
         if (numbers.length == 0 || k > numbers.length || k < 1) {
             throw new IllegalArgumentException("invalid arguments!");
@@ -138,4 +175,7 @@ public class MyLessonsAlgorithms implements LessonsAlgorithms {
         }
         return numbers[k-1];  // return correct k max value
     }
+
+
+
 }
