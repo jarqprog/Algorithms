@@ -6,33 +6,93 @@ import java.util.List;
 public class IntBinarySearch implements BinarySearch<Integer> {
 
     @Override
-    public boolean contains(List<Integer> numbers, Integer number) {
-        if(numbers.size() == 0 || numbers.get(0) == null) {
+    public boolean contains(List<Integer> elements, Integer element) {
+        if(elements.size() == 0 || elements.get(0) == null) {
             return false;
         }
 
-        int[] primitives = transformListToArray(numbers);  // it's more efficient to operate on primitives (checked)
+        int[] primitives = transformListToArray(elements);  // it's more efficient to operate on primitives (checked)
         Arrays.sort(primitives);
 
         int leftBorder = 0;
         int rightBorder = primitives.length - 1;
 
-        return containsRec(primitives, number, leftBorder, rightBorder);
+        return containsRec(primitives, element, leftBorder, rightBorder);
     }
 
     @Override
-    public boolean contains(Integer[] numbers, Integer number) {
-        if(numbers.length == 0 || numbers[0] == null) {
+    public int countRotationsInArray(Integer[] elements) {
+
+        int length = elements.length;
+        int middle;
+        int left = 0;
+        int right = length-1;
+
+        if(length < 2) {
+            throw new IllegalArgumentException("table must contain at least 2 elements!");
+        }
+
+        if(elements[0] <= elements[right]) {  // there was no table rotation
+            return 0;
+        }
+
+        while(left < right) {
+            middle = (left + right) / 2;
+            if (elements[middle] < elements[middle - 1]) {
+                return middle;
+            }
+
+            if (elements[middle] < elements[middle + 1]) {
+                return middle + 1;
+            }
+
+            // in case of repeating elements:
+            if(
+                    elements[middle].equals(elements[middle-1]) ||
+                    elements[middle].equals(elements[middle+1])) {
+                int counter = middle;
+                while (counter > left) {  // check to the left
+                    if (elements[counter] < elements[counter - 1]) {
+                        return counter;
+                    } else if (elements[counter] > elements[counter - 1]) {
+                        break;
+                    }
+                    counter--;
+                }
+                counter = middle;
+                while (counter < right) {  // check to the right
+                    if (elements[counter] > elements[counter + 1]) {
+                        return counter + 1;
+                    } else if (elements[counter] < elements[counter - 1]) {
+                        break;
+                    }
+                    counter++;
+                }
+            }
+            // end block devoted to repeating elements
+
+            if (elements[middle] > elements[right]) {
+                left = middle;
+            } else if (elements[middle] < elements[right]) {
+                right = middle;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean contains(Integer[] elements, Integer element) {
+        if(elements.length == 0 || elements[0] == null) {
             return false;
         }
 
-        int[] primitives = transformArrayToPrimitivesArray(numbers);
+        int[] primitives = transformArrayToPrimitivesArray(elements);
         Arrays.sort(primitives);
 
         int leftBorder = 0;
-        int rightBorder = numbers.length - 1;
+        int rightBorder = elements.length - 1;
 
-        return containsRec(primitives, number, leftBorder, rightBorder);
+        return containsRec(primitives, element, leftBorder, rightBorder);
     }
 
     /**
