@@ -8,5 +8,6 @@ public interface LessonsAlgorithms {
     String findLongestWord(String sentence);
     String titleCase(String sentence);
     int findKMax(int[] numbers, int k);
+    int findKMaxWithTransform(int[] numbers, int k);
 
 }

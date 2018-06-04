@@ -75,6 +75,59 @@ public class IntBinarySearchTest {
         assertTrue(search.contains(createArray(),-12));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void countRotations_with_invalid_array() throws IllegalArgumentException {
+        search.countRotationsInArray(new Integer[]{1});
+    }
+
+    @Test
+    public void countRotations_using_not_rotated() {
+        Integer[] numbers = {0, 3, 5, 8, 10};
+        int expected = 0;
+        assertEquals(expected, search.countRotationsInArray(numbers));
+    }
+
+    @Test
+    public void countRotations_with_small_array() {
+        Integer[] numbers = {4, 5, 6, 1, 2, 3};
+        int expected = 3;
+        assertEquals(expected, search.countRotationsInArray(numbers));
+    }
+
+    @Test
+    public void countRotations_using_negative_numbers() {
+        Integer[] numbers = {23, 25, 29, 30, -1, 0, 3, 5, 8, 10};
+        int expected = 4;
+        assertEquals(expected, search.countRotationsInArray(numbers));
+    }
+
+    @Test
+    public void countRotations_using_array_with_same_elements() {
+        Integer[] numbers = {1, 1, 1, 1, 1};
+        int expected = 0;  // no rotation
+        assertEquals(expected, search.countRotationsInArray(numbers));
+    }
+
+    @Test
+    public void countRotations_using_array_with_no_rotation_and_repeating_elements() {
+        Integer[] numbers = {-2, -2, -1, -1, 1, 1, 2, 2, 3, 3, 3};
+        int expected = 0;
+        assertEquals(expected, search.countRotationsInArray(numbers));
+    }
+
+    @Test
+    public void countRotations_using_repeating_elements_small_array() {
+        Integer[] numbers = {23, 23, 23, 23, 0, 0, 1, 1, 1};
+        int expected = 4;
+        assertEquals(expected, search.countRotationsInArray(numbers));
+    }
+
+    @Test
+    public void countRotations_using_repeating_elements() {
+        Integer[] numbers = {23, 23, 23, 25, 25, 29, 30, 30, 30, 30, -1, -1, 0, 3, 3, 3, 3, 5, 8, 10};
+        int expected = 10;
+        assertEquals(expected, search.countRotationsInArray(numbers));
+    }
 
     private List<Integer> createList() {
         return Arrays.asList(10, 15, 20, -20, 11, 0, 2, 7, 9, -12, 4, 3);

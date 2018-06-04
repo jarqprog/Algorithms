@@ -141,11 +141,62 @@ public class MyLessonsAlgorithmsTest {
     }
 
     @Test
-    public void findKMax_with_repeated_nums() {
+    public void findKMax_with_negative_numbers() {
+
+        int[] numbers = {10, 11, 13, 1, 5, 4, 10, 12, 3, 8, -1, -30, 21, 100};
+        int kMax = 2;
+
+        assertEquals(21, algorithms.findKMax(numbers, kMax));
+    }
+
+    @Test
+    public void findKMax_if_k_equals_1() {
+
+        int[] numbers = {15, 5, 4, 10, 12, 3, 8};
+        int kMax = 1;
+
+        assertEquals(15, algorithms.findKMax(numbers, kMax));
+    }
+
+    @Test
+    public void findKMax_with_repeated_numbers() {
 
         int[] numbers = {1, 5, 4, 10, 10, 3, 8, 10, 10};
         int kMax = 4;
 
         assertEquals(10, algorithms.findKMax(numbers, kMax));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void findKMaxWithTransform_using_invalid_array() throws IllegalArgumentException {
+
+        int[] numbers = new int[0];
+        algorithms.findKMaxWithTransform(numbers, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void findKMaxWithTransform_using_invalid_k() throws IllegalArgumentException {
+
+        int[] numbers = {1, 5, 4, 10, 12, 3, 8};
+        algorithms.findKMaxWithTransform(numbers, 11);
+        algorithms.findKMaxWithTransform(numbers, 0);
+    }
+
+    @Test
+    public void findKMaxWithTransform() {
+
+        int[] numbers = {1, 5, 4, 10, 12, 3, 8};
+        int kMax = 3;
+
+        assertEquals(8, algorithms.findKMaxWithTransform(numbers, kMax));
+    }
+
+    @Test
+    public void findKMaxWithTransform_with_repeated_numbers() {
+
+        int[] numbers = {1, 5, 4, 10, 10, 3, 8, 10, 10};
+        int kMax = 4;
+
+        assertEquals(10, algorithms.findKMaxWithTransform(numbers, kMax));
     }
 }
