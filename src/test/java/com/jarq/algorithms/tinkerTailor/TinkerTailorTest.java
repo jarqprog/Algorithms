@@ -2,8 +2,6 @@ package com.jarq.algorithms.tinkerTailor;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.junit.Assert.*;
 
 public class TinkerTailorTest {

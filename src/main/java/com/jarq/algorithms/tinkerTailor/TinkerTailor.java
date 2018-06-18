@@ -1,6 +1,5 @@
 package com.jarq.algorithms.tinkerTailor;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,6 +22,8 @@ public class TinkerTailor {
             for (int playerNo=1; playerNo<=numberOfPlayers; playerNo++) {
                 if (! usedPlayers.contains(playerNo) ) {
                     if (counter == gameCounter) {
+
+                        // player is chosen, add player, restart counter
                         counter = 1;
                         usedPlayers.add(playerNo);
                         countedPlayers[currentIndex] = playerNo;
