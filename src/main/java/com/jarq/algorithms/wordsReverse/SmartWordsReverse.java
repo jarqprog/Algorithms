@@ -17,10 +17,6 @@ public class SmartWordsReverse implements WordsReverse {
 
     private char[] reverseInArray(char[] array, int startIndex, int finalIndex) {
 
-        if (startIndex >= finalIndex) {
-            return array;
-        }
-
         while (startIndex < finalIndex) {
             char aux = array[startIndex];
             array[startIndex] = array[finalIndex];
