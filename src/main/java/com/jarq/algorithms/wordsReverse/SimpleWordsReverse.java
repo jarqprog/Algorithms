@@ -1,6 +1,6 @@
 package com.jarq.algorithms.wordsReverse;
 
-public class MyWordsReverse implements WordsReverse {
+public class SimpleWordsReverse implements WordsReverse {
 
     @Override
     public String reverse(String words) {

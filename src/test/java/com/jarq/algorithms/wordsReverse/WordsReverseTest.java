@@ -2,11 +2,15 @@ package com.jarq.algorithms.wordsReverse;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class MyWordsReverseTest {
+public abstract class WordsReverseTest {
 
-    private WordsReverse wordsReverse = new MyWordsReverse();
+    private WordsReverse wordsReverse;
+
+    protected void setWordsReverse(WordsReverse wordsReverse) {
+        this.wordsReverse = wordsReverse;
+    }
 
     @Test
     public void reverse_if_empty() {
